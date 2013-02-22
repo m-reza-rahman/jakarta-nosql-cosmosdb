@@ -1,0 +1,1 @@
+Demo of using NoSQL (MongoDB) with CDI.
