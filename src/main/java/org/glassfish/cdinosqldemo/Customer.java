@@ -47,7 +47,9 @@ import com.mongodb.BasicDBObject;
  */
 public class Customer extends BasicDBObject {
 
-    public String getId() {
+	private static final long serialVersionUID = 1L;
+
+	public String getId() {
         return getString("_id");
     }
 

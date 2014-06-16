@@ -40,9 +40,10 @@
 
 package org.glassfish.cdinosqldemo;
 
+import java.util.List;
+
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
-import java.util.List;
 
 /**
  * Order, stored as a root JSON object, nesting its order lines in the same
@@ -50,78 +51,81 @@ import java.util.List;
  */
 public class Order extends BasicDBObject {
 
-    public String getId() {
-        return getString("_id");
-    }
+	private static final long serialVersionUID = 1L;
 
-    public String getDescription() {
-        return getString("description");
-    }
+	public String getId() {
+		return getString("_id");
+	}
 
-    public void setDescription(String description) {
-        put("description", description);
-    }
+	public String getDescription() {
+		return getString("description");
+	}
 
-    public double getTotalCost() {
-        if (get("totalCost") != null) {
-            return getDouble("totalCost");
-        }
+	public void setDescription(String description) {
+		put("description", description);
+	}
 
-        return 0;
-    }
+	public double getTotalCost() {
+		if (get("totalCost") != null) {
+			return getDouble("totalCost");
+		}
 
-    public void setTotalCost(double totalCost) {
-        put("totalCost", totalCost);
-    }
+		return 0;
+	}
 
-    public List getOrderLines() {
-        BasicDBList orderLines = (BasicDBList) get("orderLines");
+	public void setTotalCost(double totalCost) {
+		put("totalCost", totalCost);
+	}
 
-        if (orderLines == null) {
-            orderLines = new BasicDBList();
-            put("orderLines", orderLines);
-        }
+	@SuppressWarnings("rawtypes")
+	public List getOrderLines() {
+		BasicDBList orderLines = (BasicDBList) get("orderLines");
 
-        return orderLines;
-    }
+		if (orderLines == null) {
+			orderLines = new BasicDBList();
+			put("orderLines", orderLines);
+		}
 
-    public String getCustomerId() {
-        return getString("customerId");
-    }
+		return orderLines;
+	}
 
-    public void setCustomerId(String customerId) {
-        put("customerId", customerId);
-    }
+	public String getCustomerId() {
+		return getString("customerId");
+	}
 
-    public Address getBillingAddress() {
-        return (Address) get("billingAddress");
-    }
+	public void setCustomerId(String customerId) {
+		put("customerId", customerId);
+	}
 
-    public void setBillingAddress(Address billingAddress) {
-        put("billingAddress", billingAddress);
-    }
+	public Address getBillingAddress() {
+		return (Address) get("billingAddress");
+	}
 
-    public Address getShippingAddress() {
-        return (Address) get("shippingAddress");
-    }
+	public void setBillingAddress(Address billingAddress) {
+		put("billingAddress", billingAddress);
+	}
 
-    public void setShippingAddress(Address shippingAddress) {
-        put("shippingAddress", shippingAddress);
-    }
+	public Address getShippingAddress() {
+		return (Address) get("shippingAddress");
+	}
 
-    /**
-     * Add the order line to the order, and set the back reference and update
-     * the order cost.
-     */
-    public void addOrderLine(OrderLine orderLine) {
-        getOrderLines().add(orderLine);
-        orderLine.setLineNumber(getOrderLines().size());
-        setTotalCost(getTotalCost() + orderLine.getCost());
-    }
+	public void setShippingAddress(Address shippingAddress) {
+		put("shippingAddress", shippingAddress);
+	}
 
-    @Override
-    public String toString() {
-        return "Order(" + getDescription() + ", " + getTotalCost() + ")";
-    }
+	/**
+	 * Add the order line to the order, and set the back reference and update
+	 * the order cost.
+	 */
+	@SuppressWarnings("unchecked")
+	public void addOrderLine(OrderLine orderLine) {
+		getOrderLines().add(orderLine);
+		orderLine.setLineNumber(getOrderLines().size());
+		setTotalCost(getTotalCost() + orderLine.getCost());
+	}
+
+	@Override
+	public String toString() {
+		return "Order(" + getDescription() + ", " + getTotalCost() + ")";
+	}
 }
-

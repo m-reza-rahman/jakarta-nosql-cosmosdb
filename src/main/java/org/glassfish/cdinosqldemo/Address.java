@@ -47,35 +47,37 @@ import com.mongodb.BasicDBObject;
  */
 public class Address extends BasicDBObject {
 
-    public String getStreet() {
-        return getString("street");
-    }
+	private static final long serialVersionUID = 1L;
 
-    public void setStreet(String street) {
-        put("street", street);
-    }
+	public String getStreet() {
+		return getString("street");
+	}
 
-    public String getCity() {
-        return getString("city");
-    }
+	public void setStreet(String street) {
+		put("street", street);
+	}
 
-    public void setCity(String city) {
-        put("city", city);
-    }
+	public String getCity() {
+		return getString("city");
+	}
 
-    public String getState() {
-        return getString("state");
-    }
+	public void setCity(String city) {
+		put("city", city);
+	}
 
-    public void setState(String state) {
-        put("state", state);
-    }
+	public String getState() {
+		return getString("state");
+	}
 
-    public String getZip() {
-        return getString("zip");
-    }
+	public void setState(String state) {
+		put("state", state);
+	}
 
-    public void setZip(String zip) {
-        put("zip", zip);
-    }
+	public String getZip() {
+		return getString("zip");
+	}
+
+	public void setZip(String zip) {
+		put("zip", zip);
+	}
 }

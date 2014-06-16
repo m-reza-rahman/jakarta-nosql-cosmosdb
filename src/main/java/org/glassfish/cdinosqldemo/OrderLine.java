@@ -47,43 +47,45 @@ import com.mongodb.BasicDBObject;
  */
 public class OrderLine extends BasicDBObject {
 
-    public OrderLine() {
-    }
+	private static final long serialVersionUID = 1L;
 
-    public OrderLine(String description, double cost) {
-        put("description", description);
-        put("cost", cost);
-    }
+	public OrderLine() {
+	}
 
-    public int getLineNumber() {
-        if (get("lineNumber") != null) {
-            return getInt("lineNumber");
-        }
+	public OrderLine(String description, double cost) {
+		put("description", description);
+		put("cost", cost);
+	}
 
-        return 0;
-    }
+	public int getLineNumber() {
+		if (get("lineNumber") != null) {
+			return getInt("lineNumber");
+		}
 
-    public void setLineNumber(int lineNumber) {
-        put("lineNumber", lineNumber);
-    }
+		return 0;
+	}
 
-    public String getDescription() {
-        return getString("description");
-    }
+	public void setLineNumber(int lineNumber) {
+		put("lineNumber", lineNumber);
+	}
 
-    public void setDescription(String description) {
-        put("description", description);
-    }
+	public String getDescription() {
+		return getString("description");
+	}
 
-    public double getCost() {
-        if (get("cost") != null) {
-            return getDouble("cost");
-        }
+	public void setDescription(String description) {
+		put("description", description);
+	}
 
-        return 0;
-    }
+	public double getCost() {
+		if (get("cost") != null) {
+			return getDouble("cost");
+		}
 
-    public void setCost(double cost) {
-        put("cost", cost);
-    }
+		return 0;
+	}
+
+	public void setCost(double cost) {
+		put("cost", cost);
+	}
 }
