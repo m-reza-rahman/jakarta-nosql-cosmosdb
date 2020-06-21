@@ -38,7 +38,7 @@
  * holder.
  */
 
-package org.glassfish.cdinosqldemo;
+package org.jnosql.demo.cosmosdb;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
