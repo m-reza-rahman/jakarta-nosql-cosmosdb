@@ -38,54 +38,46 @@
  * holder.
  */
 
-package org.glassfish.cdinosqldemo;
+package org.jnosql.demo.cosmosdb;
 
 import com.mongodb.BasicDBObject;
 
 /**
- * OrderLine, stored as part of the Order document.
+ * Address, stored as part of the Order document.
  */
-public class OrderLine extends BasicDBObject {
+public class Address extends BasicDBObject {
 
 	private static final long serialVersionUID = 1L;
 
-	public OrderLine() {
+	public String getStreet() {
+		return getString("street");
 	}
 
-	public OrderLine(String description, double cost) {
-		put("description", description);
-		put("cost", cost);
+	public void setStreet(String street) {
+		put("street", street);
 	}
 
-	public int getLineNumber() {
-		if (get("lineNumber") != null) {
-			return getInt("lineNumber");
-		}
-
-		return 0;
+	public String getCity() {
+		return getString("city");
 	}
 
-	public void setLineNumber(int lineNumber) {
-		put("lineNumber", lineNumber);
+	public void setCity(String city) {
+		put("city", city);
 	}
 
-	public String getDescription() {
-		return getString("description");
+	public String getState() {
+		return getString("state");
 	}
 
-	public void setDescription(String description) {
-		put("description", description);
+	public void setState(String state) {
+		put("state", state);
 	}
 
-	public double getCost() {
-		if (get("cost") != null) {
-			return getDouble("cost");
-		}
-
-		return 0;
+	public String getZip() {
+		return getString("zip");
 	}
 
-	public void setCost(double cost) {
-		put("cost", cost);
+	public void setZip(String zip) {
+		put("zip", zip);
 	}
 }

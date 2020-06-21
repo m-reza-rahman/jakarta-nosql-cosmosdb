@@ -38,26 +38,54 @@
  * holder.
  */
 
-package org.glassfish.cdinosqldemo;
+package org.jnosql.demo.cosmosdb;
 
 import com.mongodb.BasicDBObject;
 
 /**
- * Customer, stored as a root JSON object.
+ * OrderLine, stored as part of the Order document.
  */
-public class Customer extends BasicDBObject {
+public class OrderLine extends BasicDBObject {
 
 	private static final long serialVersionUID = 1L;
 
-	public String getId() {
-        return getString("_id");
-    }
+	public OrderLine() {
+	}
 
-    public String getName() {
-        return getString("name");
-    }
+	public OrderLine(String description, double cost) {
+		put("description", description);
+		put("cost", cost);
+	}
 
-    public void setName(String name) {
-        put("name", name);
-    }
+	public int getLineNumber() {
+		if (get("lineNumber") != null) {
+			return getInt("lineNumber");
+		}
+
+		return 0;
+	}
+
+	public void setLineNumber(int lineNumber) {
+		put("lineNumber", lineNumber);
+	}
+
+	public String getDescription() {
+		return getString("description");
+	}
+
+	public void setDescription(String description) {
+		put("description", description);
+	}
+
+	public double getCost() {
+		if (get("cost") != null) {
+			return getDouble("cost");
+		}
+
+		return 0;
+	}
+
+	public void setCost(double cost) {
+		put("cost", cost);
+	}
 }

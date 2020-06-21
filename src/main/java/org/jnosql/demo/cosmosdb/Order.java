@@ -38,63 +38,94 @@
  * holder.
  */
 
-package org.glassfish.cdinosqldemo;
+package org.jnosql.demo.cosmosdb;
 
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.MongoClient;
-import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
+import java.util.List;
 
-@ApplicationScoped
-public class MongoDbFactory {
+import com.mongodb.BasicDBList;
+import com.mongodb.BasicDBObject;
 
-    private MongoClient mongoClient;
+/**
+ * Order, stored as a root JSON object, nesting its order lines in the same
+ * document.
+ */
+public class Order extends BasicDBObject {
 
-    @PostConstruct
-    public void init() throws UnknownHostException {
-        setupLogging();
-        mongoClient = new MongoClient();
-        cleanDatabase();
-    }
+	private static final long serialVersionUID = 1L;
 
-    private void setupLogging() throws SecurityException {
-        System.out.println("\nSetting up MongoDB logging.\n");
+	public String getId() {
+		return getString("_id");
+	}
 
-        System.setProperty("DEBUG.MONGO", "true");
-        System.setProperty("DB.TRACE", "true");
+	public String getDescription() {
+		return getString("description");
+	}
 
-        Logger mongoLogger = Logger.getLogger("com.mongodb");
-        mongoLogger.setLevel(Level.FINEST);
-    }
+	public void setDescription(String description) {
+		put("description", description);
+	}
 
-    @Produces
-    @CustomersCollection
-    public DBCollection getCustomersCollection() {
-        DB db = mongoClient.getDB("cdi-nosql-demo");
-        return db.getCollection("customers");
-    }
+	public double getTotalCost() {
+		if (get("totalCost") != null) {
+			return getDouble("totalCost");
+		}
 
-    @Produces
-    @OrdersCollection
-    public DBCollection getOrdersCollection() {
-        DB db = mongoClient.getDB("cdi-nosql-demo");
-        return db.getCollection("orders");
-    }
+		return 0;
+	}
 
-    @PreDestroy
-    public void destroy() {
-        // cleanDatabase();
-        mongoClient.close();
-    }
+	public void setTotalCost(double totalCost) {
+		put("totalCost", totalCost);
+	}
 
-    private void cleanDatabase() {
-        System.out.println("\nCleaning database.\n");
-        mongoClient.dropDatabase("cdi-nosql-demo");
-    }
+	@SuppressWarnings("rawtypes")
+	public List getOrderLines() {
+		BasicDBList orderLines = (BasicDBList) get("orderLines");
+
+		if (orderLines == null) {
+			orderLines = new BasicDBList();
+			put("orderLines", orderLines);
+		}
+
+		return orderLines;
+	}
+
+	public String getCustomerId() {
+		return getString("customerId");
+	}
+
+	public void setCustomerId(String customerId) {
+		put("customerId", customerId);
+	}
+
+	public Address getBillingAddress() {
+		return (Address) get("billingAddress");
+	}
+
+	public void setBillingAddress(Address billingAddress) {
+		put("billingAddress", billingAddress);
+	}
+
+	public Address getShippingAddress() {
+		return (Address) get("shippingAddress");
+	}
+
+	public void setShippingAddress(Address shippingAddress) {
+		put("shippingAddress", shippingAddress);
+	}
+
+	/**
+	 * Add the order line to the order, and set the back reference and update
+	 * the order cost.
+	 */
+	@SuppressWarnings("unchecked")
+	public void addOrderLine(OrderLine orderLine) {
+		getOrderLines().add(orderLine);
+		orderLine.setLineNumber(getOrderLines().size());
+		setTotalCost(getTotalCost() + orderLine.getCost());
+	}
+
+	@Override
+	public String toString() {
+		return "Order(" + getDescription() + ", " + getTotalCost() + ")";
+	}
 }

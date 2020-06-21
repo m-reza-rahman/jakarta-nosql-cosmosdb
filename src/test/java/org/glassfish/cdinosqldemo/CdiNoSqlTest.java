@@ -53,6 +53,13 @@ import org.jboss.arquillian.junit.InSequence;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jnosql.demo.cosmosdb.Address;
+import org.jnosql.demo.cosmosdb.Customer;
+import org.jnosql.demo.cosmosdb.CustomersCollection;
+import org.jnosql.demo.cosmosdb.MongoDbFactory;
+import org.jnosql.demo.cosmosdb.Order;
+import org.jnosql.demo.cosmosdb.OrderLine;
+import org.jnosql.demo.cosmosdb.OrdersCollection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

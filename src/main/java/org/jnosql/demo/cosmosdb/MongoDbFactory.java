@@ -38,46 +38,63 @@
  * holder.
  */
 
-package org.glassfish.cdinosqldemo;
+package org.jnosql.demo.cosmosdb;
 
-import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.MongoClient;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
 
-/**
- * Address, stored as part of the Order document.
- */
-public class Address extends BasicDBObject {
+@ApplicationScoped
+public class MongoDbFactory {
 
-	private static final long serialVersionUID = 1L;
+    private MongoClient mongoClient;
 
-	public String getStreet() {
-		return getString("street");
-	}
+    @PostConstruct
+    public void init() throws UnknownHostException {
+        setupLogging();
+        mongoClient = new MongoClient();
+        cleanDatabase();
+    }
 
-	public void setStreet(String street) {
-		put("street", street);
-	}
+    private void setupLogging() throws SecurityException {
+        System.out.println("\nSetting up MongoDB logging.\n");
 
-	public String getCity() {
-		return getString("city");
-	}
+        System.setProperty("DEBUG.MONGO", "true");
+        System.setProperty("DB.TRACE", "true");
 
-	public void setCity(String city) {
-		put("city", city);
-	}
+        Logger mongoLogger = Logger.getLogger("com.mongodb");
+        mongoLogger.setLevel(Level.FINEST);
+    }
 
-	public String getState() {
-		return getString("state");
-	}
+    @Produces
+    @CustomersCollection
+    public DBCollection getCustomersCollection() {
+        DB db = mongoClient.getDB("cdi-nosql-demo");
+        return db.getCollection("customers");
+    }
 
-	public void setState(String state) {
-		put("state", state);
-	}
+    @Produces
+    @OrdersCollection
+    public DBCollection getOrdersCollection() {
+        DB db = mongoClient.getDB("cdi-nosql-demo");
+        return db.getCollection("orders");
+    }
 
-	public String getZip() {
-		return getString("zip");
-	}
+    @PreDestroy
+    public void destroy() {
+        // cleanDatabase();
+        mongoClient.close();
+    }
 
-	public void setZip(String zip) {
-		put("zip", zip);
-	}
+    private void cleanDatabase() {
+        System.out.println("\nCleaning database.\n");
+        mongoClient.dropDatabase("cdi-nosql-demo");
+    }
 }
