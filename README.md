@@ -1,9 +1,8 @@
 # Jakarta NoSQL with Cosmos DB
 
-This repository shows how to use Cosmos DB with the Jakarta NoSQL specification. The repository hosts the demo for [this](abstract.md) talk.
+This repository shows how to use Cosmos DB with the Jakarta NoSQL specification. The repository hosts the demo for [this](abstract.md) talk. We will be using the Azure Cosmos DB MongoDB API. You could also use the Cassandra API with Jakarta NoSQL.
 
 ## Setup
-We will be using the Azure Cosmos DB MongoDB API. You could also use the Cassandra API with Jakarta NoSQL.
 * Install JDK 8 (we used [Azul Zulu Java 8 LTS](https://www.azul.com/downloads/zulu-community/)).
 * Install the Eclipse IDE for Enterprise Java Developers from [here](https://www.eclipse.org/downloads/packages/). 
 * You will need a GitHub account.
