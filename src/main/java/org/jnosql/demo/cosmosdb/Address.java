@@ -1,43 +1,55 @@
 package org.jnosql.demo.cosmosdb;
 
-import com.mongodb.BasicDBObject;
+import org.jnosql.artemis.Column;
+import org.jnosql.artemis.Embeddable;
 
 /**
- * Address, stored as part of the Order document.
+ * Address, stored as part of the Order.
  */
-public class Address extends BasicDBObject {
+@Embeddable
+public class Address {
 
-	private static final long serialVersionUID = 1L;
+	@Column
+	private String street;
+
+	@Column
+	private String city;
+
+	@Column
+	private String state;
+
+	@Column
+	private String zip;
 
 	public String getStreet() {
-		return getString("street");
+		return street;
 	}
 
 	public void setStreet(String street) {
-		put("street", street);
+		this.street = street;
 	}
 
 	public String getCity() {
-		return getString("city");
+		return city;
 	}
 
 	public void setCity(String city) {
-		put("city", city);
+		this.city = city;
 	}
 
 	public String getState() {
-		return getString("state");
+		return state;
 	}
 
 	public void setState(String state) {
-		put("state", state);
+		this.state = state;
 	}
 
 	public String getZip() {
-		return getString("zip");
+		return zip;
 	}
 
 	public void setZip(String zip) {
-		put("zip", zip);
+		this.zip = zip;
 	}
 }
