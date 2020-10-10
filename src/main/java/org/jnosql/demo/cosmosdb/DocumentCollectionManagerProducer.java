@@ -1,5 +1,11 @@
 package org.jnosql.demo.cosmosdb;
 
+import jakarta.nosql.Settings;
+import jakarta.nosql.document.DocumentCollectionManager;
+import jakarta.nosql.document.DocumentCollectionManagerFactory;
+import jakarta.nosql.document.DocumentConfiguration;
+import org.eclipse.jnosql.diana.mongodb.document.MongoDBDocumentConfiguration;
+
 import java.util.Collections;
 import java.util.Map;
 
@@ -7,11 +13,6 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 
-import org.jnosql.diana.api.Settings;
-import org.jnosql.diana.api.document.DocumentCollectionManager;
-import org.jnosql.diana.api.document.DocumentCollectionManagerFactory;
-import org.jnosql.diana.api.document.DocumentConfiguration;
-import org.jnosql.diana.mongodb.document.MongoDBDocumentConfiguration;
 
 @ApplicationScoped
 public class DocumentCollectionManagerProducer {

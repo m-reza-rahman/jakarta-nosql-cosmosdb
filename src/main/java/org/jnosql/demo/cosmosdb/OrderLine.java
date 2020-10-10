@@ -1,7 +1,7 @@
 package org.jnosql.demo.cosmosdb;
 
-import org.jnosql.artemis.Column;
-import org.jnosql.artemis.Embeddable;
+import jakarta.nosql.mapping.Column;
+import jakarta.nosql.mapping.Embeddable;
 
 /**
  * OrderLine, stored as part of the Order document.
