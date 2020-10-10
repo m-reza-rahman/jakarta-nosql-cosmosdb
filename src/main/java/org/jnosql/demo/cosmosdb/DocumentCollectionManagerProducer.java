@@ -7,40 +7,30 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 
-import org.jnosql.diana.api.Settings;
-import org.jnosql.diana.api.document.DocumentCollectionManager;
-import org.jnosql.diana.api.document.DocumentCollectionManagerFactory;
-import org.jnosql.diana.api.document.DocumentConfiguration;
-import org.jnosql.diana.mongodb.document.MongoDBDocumentConfiguration;
+import org.eclipse.jnosql.diana.mongodb.document.MongoDBDocumentConfiguration;
+
+import jakarta.nosql.Settings;
+import jakarta.nosql.document.DocumentCollectionManager;
+import jakarta.nosql.document.DocumentCollectionManagerFactory;
+import jakarta.nosql.document.DocumentConfiguration;
 
 @ApplicationScoped
 public class DocumentCollectionManagerProducer {
 
-	private static final String CUSTOMER_COLLECTION = "customers";
-	private static final String ORDER_COLLECTION = "orders";
-
-	@SuppressWarnings("rawtypes")
 	private DocumentConfiguration configuration;
 
-	@SuppressWarnings("rawtypes")
 	private DocumentCollectionManagerFactory managerFactory;
 
 	@PostConstruct
 	public void init() {
 		configuration = new MongoDBDocumentConfiguration();
-		Map<String, Object> settings = Collections.singletonMap("mongodb-server-host-1", "localhost:27017");
+		Map<String, Object> settings = Collections.singletonMap("document.settings.jakarta.nosql.host",
+				"mongodb://azure-game-store-db-reza:n8OCHCrMcVWXfhVz3IEuzJKOdWffqff9n6jf1PvKyyQAFBRuCgmZYUyB3PwM8Cc0BO1eZgOZt7SxyuiCe4W8pw==@azure-game-store-db-reza.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@azure-game-store-db-reza@");
 		managerFactory = configuration.get(Settings.of(settings));
 	}
 
 	@Produces
-	public DocumentCollectionManager getCustomerManager() {
-		return managerFactory.get(CUSTOMER_COLLECTION);
-
+	public DocumentCollectionManager getManager() {
+		return managerFactory.get("document");
 	}
-	
-	@Produces
-	public DocumentCollectionManager getOrderManager() {
-		return managerFactory.get(ORDER_COLLECTION);
-
-	}	
 }

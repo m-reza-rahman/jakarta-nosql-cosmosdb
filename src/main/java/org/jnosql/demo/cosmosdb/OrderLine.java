@@ -1,13 +1,14 @@
 package org.jnosql.demo.cosmosdb;
 
-import org.jnosql.artemis.Column;
-import org.jnosql.artemis.Embeddable;
+import jakarta.nosql.mapping.Column;
+import jakarta.nosql.mapping.Entity;
+import jakarta.nosql.mapping.Id;
 
-/**
- * OrderLine, stored as part of the Order document.
- */
-@Embeddable
+@Entity
 public class OrderLine {
+	
+	@Id("id")
+	private long id;	
 
 	@Column
 	private String description;

@@ -1,14 +1,16 @@
 package org.jnosql.demo.cosmosdb;
 
+import jakarta.nosql.mapping.Column;
+import jakarta.nosql.mapping.Entity;
+import jakarta.nosql.mapping.Id;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.jnosql.artemis.Column;
-import org.jnosql.artemis.Id;
 
 /**
  * Order, stored as a root object, nesting its order lines in the same document.
  */
+@Entity
 public class Order {
 
 	@Id("id")

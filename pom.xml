@@ -15,18 +15,24 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jakarta.nosql.version>1.0.0-b2</jakarta.nosql.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.jnosql.artemis</groupId>
+			<groupId>org.eclipse.jnosql.artemis</groupId>
 			<artifactId>artemis-document</artifactId>
-			<version>0.0.9</version>
+			<version>${jakarta.nosql.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jnosql.diana</groupId>
+			<groupId>org.eclipse.jnosql.diana</groupId>
 			<artifactId>mongodb-driver</artifactId>
-			<version>0.0.9</version>
+			<version>${jakarta.nosql.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.weld.se</groupId>
+			<artifactId>weld-se-shaded</artifactId>
+			<version>3.1.5.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.weld.se</groupId>
