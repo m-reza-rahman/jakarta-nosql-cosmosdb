@@ -7,11 +7,12 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 
-import org.jnosql.diana.api.Settings;
-import org.jnosql.diana.api.document.DocumentCollectionManager;
-import org.jnosql.diana.api.document.DocumentCollectionManagerFactory;
-import org.jnosql.diana.api.document.DocumentConfiguration;
-import org.jnosql.diana.mongodb.document.MongoDBDocumentConfiguration;
+import org.eclipse.jnosql.diana.mongodb.document.MongoDBDocumentConfiguration;
+
+import jakarta.nosql.Settings;
+import jakarta.nosql.document.DocumentCollectionManager;
+import jakarta.nosql.document.DocumentCollectionManagerFactory;
+import jakarta.nosql.document.DocumentConfiguration;
 
 @ApplicationScoped
 public class DocumentCollectionManagerProducer {
@@ -19,10 +20,8 @@ public class DocumentCollectionManagerProducer {
 	private static final String CUSTOMER_COLLECTION = "customers";
 	private static final String ORDER_COLLECTION = "orders";
 
-	@SuppressWarnings("rawtypes")
 	private DocumentConfiguration configuration;
 
-	@SuppressWarnings("rawtypes")
 	private DocumentCollectionManagerFactory managerFactory;
 
 	@PostConstruct
@@ -37,10 +36,10 @@ public class DocumentCollectionManagerProducer {
 		return managerFactory.get(CUSTOMER_COLLECTION);
 
 	}
-	
+
 	@Produces
 	public DocumentCollectionManager getOrderManager() {
 		return managerFactory.get(ORDER_COLLECTION);
 
-	}	
+	}
 }

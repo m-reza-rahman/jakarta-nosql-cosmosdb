@@ -3,11 +3,9 @@ package org.jnosql.demo.cosmosdb;
 import java.util.regex.Pattern;
 
 import org.bson.types.ObjectId;
-import org.jboss.arquillian.junit.InSequence;
 import org.junit.Test;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
 public class AzureGameStoreTest {
