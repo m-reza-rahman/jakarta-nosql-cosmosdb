@@ -27,6 +27,6 @@ public class DocumentCollectionManagerProducer {
 
 	@Produces
 	public DocumentCollectionManager getManager() {
-		return factory.get("document");
+		return factory.get("azure-game-store-db");
 	}
 }
