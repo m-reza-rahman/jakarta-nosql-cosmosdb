@@ -137,8 +137,9 @@ public class AzureGameStoreTest {
 
 		order.addOrderLine(new OrderLine("handling", 55));
 		order.addOrderLine(new OrderLine("tax", 300));
+		
 		template.update(order);
-
+		
 		assertEquals(757, template.find(Order.class, orderId).get().getTotalCost(), 0);
 		logger.info("Updated order: " + order + " with ID: " + orderId);
 	}
