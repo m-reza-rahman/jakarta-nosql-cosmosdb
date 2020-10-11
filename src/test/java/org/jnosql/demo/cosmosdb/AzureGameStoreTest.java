@@ -1,14 +1,27 @@
 package org.jnosql.demo.cosmosdb;
 
+<<<<<<< HEAD
 import static jakarta.nosql.document.DocumentQuery.select;
+=======
+import java.util.regex.Pattern;
+>>>>>>> branch 'master' of https://github.com/m-reza-rahman/jakarta-nosql-cosmosdb.git
 
+<<<<<<< HEAD
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 
+=======
+import org.bson.types.ObjectId;
+>>>>>>> branch 'master' of https://github.com/m-reza-rahman/jakarta-nosql-cosmosdb.git
 import org.junit.Test;
 
+<<<<<<< HEAD
 import jakarta.nosql.document.DocumentQuery;
 import jakarta.nosql.mapping.document.DocumentTemplate;
+=======
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+>>>>>>> branch 'master' of https://github.com/m-reza-rahman/jakarta-nosql-cosmosdb.git
 
 public class AzureGameStoreTest {
 

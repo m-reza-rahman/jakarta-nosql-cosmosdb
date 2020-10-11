@@ -17,6 +17,12 @@ import jakarta.nosql.document.DocumentConfiguration;
 @ApplicationScoped
 public class DocumentCollectionManagerProducer {
 
+<<<<<<< HEAD
+=======
+	private static final String CUSTOMER_COLLECTION = "customers";
+	private static final String ORDER_COLLECTION = "orders";
+
+>>>>>>> branch 'master' of https://github.com/m-reza-rahman/jakarta-nosql-cosmosdb.git
 	private DocumentConfiguration configuration;
 
 	private DocumentCollectionManagerFactory managerFactory;
@@ -33,4 +39,13 @@ public class DocumentCollectionManagerProducer {
 	public DocumentCollectionManager getManager() {
 		return managerFactory.get("document");
 	}
+<<<<<<< HEAD
+=======
+
+	@Produces
+	public DocumentCollectionManager getOrderManager() {
+		return managerFactory.get(ORDER_COLLECTION);
+
+	}
+>>>>>>> branch 'master' of https://github.com/m-reza-rahman/jakarta-nosql-cosmosdb.git
 }
