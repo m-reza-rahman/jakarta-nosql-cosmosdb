@@ -1,39 +1,26 @@
 package org.jnosql.demo.cosmosdb;
 
 import jakarta.nosql.mapping.Column;
-import jakarta.nosql.mapping.Entity;
-import jakarta.nosql.mapping.Id;
+import jakarta.nosql.mapping.Embeddable;
 
-@Entity
+@Embeddable
 public class OrderLine {
 
-	@Id
-	private long id;
-
+	@Column
+	private int lineNumber;	
+	
 	@Column
 	private String description;
 
 	@Column
 	private double cost;
 
-	@Column
-	private int lineNumber;
-
 	public OrderLine() {
 	}
 
-	public OrderLine(long id, String description, double cost) {
-		this.id = id;
+	public OrderLine(String description, double cost) {
 		this.description = description;
 		this.cost = cost;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public int getLineNumber() {

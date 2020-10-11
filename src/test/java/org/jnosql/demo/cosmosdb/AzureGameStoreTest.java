@@ -23,7 +23,6 @@ public class AzureGameStoreTest {
 	private static DocumentTemplate template;
 	private long customerIdSequence = 0;
 	private long orderIdSequence = 0;
-	private long orderLineIdSequence = 0;
 	private long orderId;
 
 	@BeforeClass
@@ -53,9 +52,9 @@ public class AzureGameStoreTest {
 		address.setState("PA");
 		address.setZip("54689");
 		order.setShippingAddress(address);
-		order.addOrderLine(new OrderLine(orderLineIdSequence++, "machine", 2999));
-		order.addOrderLine(new OrderLine(orderLineIdSequence++, "shipping", 129));
-		order.addOrderLine(new OrderLine(orderLineIdSequence++, "installation", 59));
+		order.addOrderLine(new OrderLine("machine", 2999));
+		order.addOrderLine(new OrderLine("shipping", 129));
+		order.addOrderLine(new OrderLine("installation", 59));
 		template.insert(order);
 
 		order = new Order(orderIdSequence++);
@@ -73,9 +72,9 @@ public class AzureGameStoreTest {
 		address.setState("FL");
 		address.setZip("75849");
 		order.setShippingAddress(address);
-		order.addOrderLine(new OrderLine(orderLineIdSequence++, "machine", 500));
-		order.addOrderLine(new OrderLine(orderLineIdSequence++, "balls", 5));
-		order.addOrderLine(new OrderLine(orderLineIdSequence++, "shipping", 60));
+		order.addOrderLine(new OrderLine("machine", 500));
+		order.addOrderLine(new OrderLine("balls", 5));
+		order.addOrderLine(new OrderLine("shipping", 60));
 		template.insert(order);
 
 		customer = new Customer(customerIdSequence++, "Smith");
@@ -95,11 +94,11 @@ public class AzureGameStoreTest {
 		address.setState("CA");
 		address.setZip("78943");
 		order.setShippingAddress(address);
-		order.addOrderLine(new OrderLine(orderLineIdSequence++, "table", 300));
-		order.addOrderLine(new OrderLine(orderLineIdSequence++, "balls", 5));
-		order.addOrderLine(new OrderLine(orderLineIdSequence++, "rackets", 15));
-		order.addOrderLine(new OrderLine(orderLineIdSequence++, "net", 2));
-		order.addOrderLine(new OrderLine(orderLineIdSequence++, "shipping", 80));
+		order.addOrderLine(new OrderLine("table", 300));
+		order.addOrderLine(new OrderLine("balls", 5));
+		order.addOrderLine(new OrderLine("rackets", 15));
+		order.addOrderLine(new OrderLine("net", 2));
+		order.addOrderLine(new OrderLine("shipping", 80));
 		template.insert(order);
 
 		orderId = order.getId();
@@ -134,8 +133,8 @@ public class AzureGameStoreTest {
 
 		Order order = template.find(Order.class, orderId).get();
 
-		order.addOrderLine(new OrderLine(orderLineIdSequence++, "handling", 55));
-		order.addOrderLine(new OrderLine(orderLineIdSequence++, "tax", 300));
+		order.addOrderLine(new OrderLine("handling", 55));
+		order.addOrderLine(new OrderLine("tax", 300));
 		template.update(order);
 	}
 
