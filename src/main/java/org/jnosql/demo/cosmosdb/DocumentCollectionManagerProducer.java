@@ -17,15 +17,13 @@ import jakarta.nosql.document.DocumentConfiguration;
 @ApplicationScoped
 public class DocumentCollectionManagerProducer {
 
-	private DocumentConfiguration configuration;
-
 	private DocumentCollectionManagerFactory managerFactory;
 
 	@PostConstruct
 	public void init() {
-		configuration = new MongoDBDocumentConfiguration();
+		DocumentConfiguration configuration = new MongoDBDocumentConfiguration();
 		Map<String, Object> settings = Collections.singletonMap("document.settings.jakarta.nosql.host",
-				"mongodb://azure-game-store-db-reza:n8OCHCrMcVWXfhVz3IEuzJKOdWffqff9n6jf1PvKyyQAFBRuCgmZYUyB3PwM8Cc0BO1eZgOZt7SxyuiCe4W8pw==@azure-game-store-db-reza.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@azure-game-store-db-reza@");
+				"mongodb://azure-game-store-db-reza.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@azure-game-store-db-reza@");
 		managerFactory = configuration.get(Settings.of(settings));
 	}
 
