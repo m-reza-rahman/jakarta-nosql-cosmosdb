@@ -26,10 +26,7 @@ public class Order {
 	private Customer customer;
 
 	@Column
-	private Address billingAddress;
-
-	@Column
-	private Address shippingAddress;
+	private Address address;
 
 	public Order() {
 		super();
@@ -80,20 +77,12 @@ public class Order {
 		this.customer = customer;
 	}
 
-	public Address getBillingAddress() {
-		return billingAddress;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setBillingAddress(Address billingAddress) {
-		this.billingAddress = billingAddress;
-	}
-
-	public Address getShippingAddress() {
-		return shippingAddress;
-	}
-
-	public void setShippingAddress(Address shippingAddress) {
-		this.shippingAddress = shippingAddress;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	/**
