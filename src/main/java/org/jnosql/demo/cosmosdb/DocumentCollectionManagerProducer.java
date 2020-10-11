@@ -13,6 +13,7 @@ import jakarta.nosql.Settings;
 import jakarta.nosql.document.DocumentCollectionManager;
 import jakarta.nosql.document.DocumentCollectionManagerFactory;
 import jakarta.nosql.document.DocumentConfiguration;
+import org.eclipse.jnosql.diana.mongodb.document.MongoDBDocumentConfigurations;
 
 @ApplicationScoped
 public class DocumentCollectionManagerProducer {
@@ -22,9 +23,9 @@ public class DocumentCollectionManagerProducer {
 	@PostConstruct
 	public void init() {
 		DocumentConfiguration configuration = new MongoDBDocumentConfiguration();
-		Map<String, Object> settings = Collections.singletonMap("document.settings.jakarta.nosql.host",
-				"mongodb://azure-game-store-db-reza.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@azure-game-store-db-reza@");
-		factory = configuration.get(Settings.of(settings));
+		Settings settings = Settings.builder().put(MongoDBDocumentConfigurations.URL.get(),
+				"mongodb://azure-game-store-db-reza.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@azure-game-store-db-reza@").build();
+		factory = configuration.get(settings);
 	}
 
 	@Produces
