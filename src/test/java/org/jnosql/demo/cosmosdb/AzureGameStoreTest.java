@@ -107,7 +107,6 @@ public class AzureGameStoreTest {
 		logger.info("Testing find() by Id.");
 
 		Optional<Order> order = template.find(Order.class, orderId);
-
 		assertTrue(order.isPresent());
 		logger.info("Found order: " + order.get() + " by its ID: " + orderId);
 	}
@@ -138,7 +137,6 @@ public class AzureGameStoreTest {
 		order.addOrderLine(new OrderLine("handling", 55));
 		order.addOrderLine(new OrderLine("tax", 300));
 		template.update(order);
-
 		assertEquals(757, template.find(Order.class, orderId).get().getTotalCost(), 0);
 		logger.info("Updated order: " + order + " with ID: " + orderId);
 	}
