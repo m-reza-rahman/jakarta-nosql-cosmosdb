@@ -1,12 +1,8 @@
 package org.jnosql.demo.cosmosdb;
 
-
 import jakarta.nosql.mapping.Column;
 import jakarta.nosql.mapping.Embeddable;
 
-/**
- * Address, stored as part of the Order.
- */
 @Embeddable
 public class Address {
 

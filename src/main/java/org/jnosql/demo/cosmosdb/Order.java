@@ -1,19 +1,16 @@
 package org.jnosql.demo.cosmosdb;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.nosql.mapping.Column;
 import jakarta.nosql.mapping.Entity;
 import jakarta.nosql.mapping.Id;
 
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Order, stored as a root object, nesting its order lines in the same document.
- */
 @Entity
 public class Order {
 
-	@Id("id")
+	@Id
 	private long id;
 
 	@Column
@@ -26,7 +23,7 @@ public class Order {
 	private List<OrderLine> orderLines = new ArrayList<>();
 
 	@Column
-	private long customerId;
+	private Customer customer;
 
 	@Column
 	private Address billingAddress;
@@ -34,8 +31,21 @@ public class Order {
 	@Column
 	private Address shippingAddress;
 
+	public Order() {
+		super();
+	}
+
+	public Order(long id) {
+		super();
+		this.id = id;
+	}
+
 	public long getId() {
 		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getDescription() {
@@ -58,12 +68,12 @@ public class Order {
 		return orderLines;
 	}
 
-	public long getCustomerId() {
-		return customerId;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public Address getBillingAddress() {

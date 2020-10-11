@@ -6,9 +6,9 @@ import jakarta.nosql.mapping.Id;
 
 @Entity
 public class OrderLine {
-	
-	@Id("id")
-	private long id;	
+
+	@Id
+	private long id;
 
 	@Column
 	private String description;
@@ -22,9 +22,18 @@ public class OrderLine {
 	public OrderLine() {
 	}
 
-	public OrderLine(String description, double cost) {
+	public OrderLine(long id, String description, double cost) {
+		this.id = id;
 		this.description = description;
 		this.cost = cost;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public int getLineNumber() {
