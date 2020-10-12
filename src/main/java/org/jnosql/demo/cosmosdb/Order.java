@@ -97,6 +97,17 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order(" + getDescription() + ", " + getTotalCost() + ")";
+		StringBuilder builder = new StringBuilder();
+
+		builder.append(
+				"\tID=" + getId() + ", description=" + getDescription() + ", total cost=" + getTotalCost() + "\n");
+		builder.append("\tCustomer: " + getCustomer() + "\n");
+
+		builder.append("\tOrder lines:\n");
+		getOrderLines().stream().forEach(l -> builder.append("\t" + l + "\n"));
+		
+		builder.append("\tAddress: " + getAddress());		
+
+		return builder.toString();
 	}
 }
