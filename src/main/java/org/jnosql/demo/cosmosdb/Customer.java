@@ -1,5 +1,7 @@
 package org.jnosql.demo.cosmosdb;
 
+import javax.validation.constraints.NotBlank;
+
 import jakarta.nosql.mapping.Column;
 import jakarta.nosql.mapping.Entity;
 import jakarta.nosql.mapping.Id;
@@ -11,6 +13,7 @@ public class Customer {
 	private long id;
 
 	@Column
+	@NotBlank
 	private String name;
 
 	public Customer() {

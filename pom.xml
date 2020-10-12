@@ -43,9 +43,24 @@
 			<version>${jakarta.nosql.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.eclipse.jnosql.artemis</groupId>
+			<artifactId>artemis-validation</artifactId>
+			<version>${jakarta.nosql.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.jboss.weld.se</groupId>
 			<artifactId>weld-se-shaded</artifactId>
 			<version>3.1.5.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.1.6.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+			<version>3.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.smallrye.config</groupId>

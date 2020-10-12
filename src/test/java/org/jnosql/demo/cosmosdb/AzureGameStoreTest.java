@@ -4,6 +4,7 @@ import static jakarta.nosql.document.DocumentDeleteQuery.delete;
 import static jakarta.nosql.document.DocumentQuery.select;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Optional;
 import java.util.logging.Level;
@@ -11,6 +12,7 @@ import java.util.logging.Logger;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
+import javax.validation.ConstraintViolationException;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -152,6 +154,20 @@ public class AzureGameStoreTest {
 
 		assertEquals(2, template.count(Order.class));
 		logger.info("Deleted order with ID: " + orderId);
+	}
+
+	@Test
+	public void test_6_testValidity() {
+		logger.info("Testing validity of order.");
+
+		Order order = new Order(orderIdSequence++);
+
+		try {
+			template.insert(order);
+			fail();
+		} catch (ConstraintViolationException e) {
+			logger.info("Invalid order rejected:\n" + order + "\nReason: " + e.getMessage());
+		}
 	}
 
 	@AfterClass

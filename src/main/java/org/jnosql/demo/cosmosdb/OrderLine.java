@@ -1,5 +1,9 @@
 package org.jnosql.demo.cosmosdb;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PositiveOrZero;
+
 import jakarta.nosql.mapping.Column;
 import jakarta.nosql.mapping.Embeddable;
 
@@ -7,12 +11,15 @@ import jakarta.nosql.mapping.Embeddable;
 public class OrderLine {
 
 	@Column
-	private int lineNumber;	
-	
+	@Min(1)
+	private int lineNumber;
+
 	@Column
+	@NotEmpty
 	private String description;
 
 	@Column
+	@PositiveOrZero
 	private double cost;
 
 	public OrderLine() {

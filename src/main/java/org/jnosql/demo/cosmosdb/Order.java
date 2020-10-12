@@ -3,6 +3,11 @@ package org.jnosql.demo.cosmosdb;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
+
 import jakarta.nosql.mapping.Column;
 import jakarta.nosql.mapping.Entity;
 import jakarta.nosql.mapping.Id;
@@ -14,18 +19,23 @@ public class Order {
 	private long id;
 
 	@Column
+	@NotBlank
 	private String description;
 
 	@Column
+	@PositiveOrZero
 	private double totalCost = 0;
 
 	@Column
+	@NotEmpty
 	private List<OrderLine> orderLines = new ArrayList<>();
 
 	@Column
+	@NotNull
 	private Customer customer;
 
 	@Column
+	@NotNull
 	private Address address;
 
 	public Order() {
@@ -103,10 +113,10 @@ public class Order {
 				"\tID=" + getId() + ", description=" + getDescription() + ", total cost=" + getTotalCost() + "\n");
 		builder.append("\tCustomer: " + getCustomer() + "\n");
 
-		builder.append("\tOrder lines:\n");
+		builder.append("\tOrder lines: " + getOrderLines().size() + "\n");
 		getOrderLines().stream().forEach(l -> builder.append("\t" + l + "\n"));
-		
-		builder.append("\tAddress: " + getAddress());		
+
+		builder.append("\tAddress: " + getAddress());
 
 		return builder.toString();
 	}

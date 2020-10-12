@@ -1,5 +1,7 @@
 package org.jnosql.demo.cosmosdb;
 
+import javax.validation.constraints.NotBlank;
+
 import jakarta.nosql.mapping.Column;
 import jakarta.nosql.mapping.Embeddable;
 
@@ -7,15 +9,19 @@ import jakarta.nosql.mapping.Embeddable;
 public class Address {
 
 	@Column
+	@NotBlank
 	private String street;
 
 	@Column
+	@NotBlank
 	private String city;
 
 	@Column
+	@NotBlank
 	private String state;
 
 	@Column
+	@NotBlank
 	private String zip;
 
 	public String getStreet() {
