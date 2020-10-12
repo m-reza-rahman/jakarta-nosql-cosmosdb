@@ -12,7 +12,7 @@ import javax.inject.Inject;
 public class DocumentCollectionManagerProducer {
 
 	@Inject
-	@ConfigProperty(name = "document")
+	@ConfigProperty(name = "azureGameStoreDb")
 	private DocumentCollectionManager manager;
 
 	@Produces
