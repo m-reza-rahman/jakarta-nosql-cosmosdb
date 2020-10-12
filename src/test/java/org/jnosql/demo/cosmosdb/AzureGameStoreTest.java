@@ -47,7 +47,7 @@ public class AzureGameStoreTest {
 	}
 
 	@Test
-	public void test_1_Persist() {
+	public void test_1_testPersist() {
 		logger.info("Testing persist() of orders and customers.");
 
 		Customer customer1 = new Customer(customerIdSequence++, "AMCE");
@@ -105,7 +105,7 @@ public class AzureGameStoreTest {
 	}
 
 	@Test
-	public void test_2_Find() {
+	public void test_2_testFind() {
 		logger.info("Testing find() by Id.");
 
 		Optional<Order> order = template.find(Order.class, orderId);
@@ -115,7 +115,7 @@ public class AzureGameStoreTest {
 	}
 
 	@Test
-	public void test_3_Query() {
+	public void test_3_testQuery() {
 		logger.info("Testing querying.");
 
 		DocumentQuery query = select().from("Order").where("totalCost").gt(1000).build();
@@ -132,7 +132,7 @@ public class AzureGameStoreTest {
 	}
 
 	@Test
-	public void test_4_Update() {
+	public void test_4_testUpdate() {
 		logger.info("Testing update of order.");
 
 		Order order = template.find(Order.class, orderId).get();
@@ -149,6 +149,7 @@ public class AzureGameStoreTest {
 	@Test
 	public void test_5_testRemove() {
 		logger.info("Testing remove of order.");
+		assertEquals(3, template.count(Order.class));		
 
 		template.delete(Order.class, orderId);
 
@@ -164,7 +165,7 @@ public class AzureGameStoreTest {
 
 		try {
 			template.insert(order);
-			fail();
+			fail("Invalid order inserted.");
 		} catch (ConstraintViolationException e) {
 			logger.info("Invalid order rejected:\n" + order + "\nReason: " + e.getMessage());
 		}
@@ -172,7 +173,6 @@ public class AzureGameStoreTest {
 
 	@AfterClass
 	public static void destroy() {
-		template.delete(delete().from("Order").build());
 		container.close();
 	}
 }
