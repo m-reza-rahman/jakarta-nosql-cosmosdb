@@ -30,4 +30,4 @@ The next step is to get the application up and running. Follow the steps below t
 
 ## To Do
 * Incorporate Cassandra
-* Incorporate Gremlin
+* Incorporate Gremlin?
