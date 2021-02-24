@@ -26,6 +26,7 @@ The next step is to get the application up and running. Follow the steps below t
 * Once the application loads, open the [properties file](src/main/resources/META-INF/microprofile-config.properties) and replace `<Your Cosmos DB connection string`> with the connection string you noted down earlier.
 * Do a full Maven build by righting click the application -> Run As -> Maven install.
 * After the build - find, explore and run the [unit test](src/test/java/org/jnosql/demo/cosmosdb/AzureGameStoreTest.java). You can run the unit test in Eclipse by right clicking the unit test class -> Run As -> JUnit Test.
+* You can take a look at the data through the [Azure portal](http://portal.azure.com). In the portal, go to 'All resources'. Find and click on azure-game-store-db-`<your suffix>`. Open the Data Explorer panel.
 
 ## To Do
 * Incorporate Cassandra
