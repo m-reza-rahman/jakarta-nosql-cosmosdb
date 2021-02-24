@@ -11,17 +11,17 @@ import javax.inject.Inject;
 @ApplicationScoped
 public class DocumentCollectionManagerProducer {
 
-	@Inject
-	@ConfigProperty(name = "azureGameStoreDb")
-	private DocumentCollectionManager manager;
+  @Inject
+  @ConfigProperty(name = "azureGameStoreDb")
+  private DocumentCollectionManager manager;
 
-	@Produces
-	@ApplicationScoped
-	public DocumentCollectionManager getManager() {
-		return manager;
-	}
+  @Produces
+  @ApplicationScoped
+  public DocumentCollectionManager getManager() {
+    return manager;
+  }
 
-	void close(@Disposes DocumentCollectionManager manager) {
-		manager.close();
-	}
+  void close(@Disposes DocumentCollectionManager manager) {
+    manager.close();
+  }
 }
