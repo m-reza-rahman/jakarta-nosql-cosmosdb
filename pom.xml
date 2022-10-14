@@ -15,7 +15,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jakarta.nosql.version>1.0.0-SNAPSHOT</jakarta.nosql.version>
+        <jakarta.nosql.version>1.0.0-b4</jakarta.nosql.version>
     </properties>
 
     <repositories>
@@ -33,24 +33,24 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.eclipse.jnosql.artemis</groupId>
-            <artifactId>artemis-document</artifactId>
+            <groupId>org.eclipse.jnosql.mapping</groupId>
+            <artifactId>mapping-document</artifactId>
             <version>${jakarta.nosql.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.jnosql.diana</groupId>
+            <groupId>org.eclipse.jnosql.communication</groupId>
             <artifactId>mongodb-driver</artifactId>
             <version>${jakarta.nosql.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.jnosql.artemis</groupId>
-            <artifactId>artemis-validation</artifactId>
+            <groupId>org.eclipse.jnosql.mapping</groupId>
+            <artifactId>mapping-validation</artifactId>
             <version>${jakarta.nosql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.weld.se</groupId>
             <artifactId>weld-se-shaded</artifactId>
-            <version>3.1.5.Final</version>
+            <version>3.1.9.Final</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
