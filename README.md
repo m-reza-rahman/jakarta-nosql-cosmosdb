@@ -13,7 +13,7 @@ We will be using the MongoDB API for Cosmos DB. You could also use the Cassandra
 ## Start Azure Cosmos DB
 We first need to set up the database on Azure.
 * Go to the [Azure portal](http://portal.azure.com).
-* Select 'Create a resource'. In the search box, enter and select 'Azure Cosmos DB'. Hit create.
+* Select 'Create a resource'. In the search box, enter and select 'Azure Cosmos DB for MongoDB'. Hit create.
 * Specify the API to be MongoDB. Create a new resource group named azure-game-store-group-`<your suffix>` (the suffix could be your first name such as "reza"). Specify the account name to be azure-game-store-db-`<your suffix>` (the suffix could be your first name such as "reza"). Hit 'Create'. It will take a moment for the database to deploy and be ready for use.
 * In the portal, go to 'All resources'. Find and click on azure-game-store-db-`<your suffix>`. Open the connection string panel. Note down the primary connection string.
 
