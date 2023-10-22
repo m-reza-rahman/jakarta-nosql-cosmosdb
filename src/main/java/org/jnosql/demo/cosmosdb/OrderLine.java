@@ -1,11 +1,11 @@
 package org.jnosql.demo.cosmosdb;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.PositiveOrZero;
 
-import jakarta.nosql.mapping.Column;
-import jakarta.nosql.mapping.Embeddable;
+import jakarta.nosql.Column;
+import org.eclipse.jnosql.mapping.Embeddable;
 
 @Embeddable
 public class OrderLine {
