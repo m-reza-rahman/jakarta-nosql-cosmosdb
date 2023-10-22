@@ -1,8 +1,8 @@
 package org.jnosql.demo.cosmosdb;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,15 +13,15 @@ import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.validation.ConstraintViolationException;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import jakarta.nosql.document.DocumentTemplate;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@TestMethodOrder(MethodOrderer.MethodName.class)
 public class AzureGameStoreTest {
 
   private static final Logger logger = Logger.getLogger(AzureGameStoreTest.class.getName());
@@ -34,7 +34,7 @@ public class AzureGameStoreTest {
 
   private static long orderId;
 
-  @BeforeClass
+  @BeforeAll
   public static void init() {
     logger.setLevel(Level.INFO);
 
@@ -169,7 +169,7 @@ public class AzureGameStoreTest {
     }
   }
 
-  @AfterClass
+  @AfterAll
   public static void destroy() {
     container.close();
   }
