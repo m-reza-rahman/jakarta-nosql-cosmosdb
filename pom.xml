@@ -12,31 +12,35 @@
     <url>http://www.jnosql.org</url>
 
     <properties>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <weld.se.core.version>5.1.2.Final</weld.se.core.version>
+        <jnosql.version>1.0.2</jnosql.version>
+        <yasson.version>3.0.3</yasson.version>
+        <smallrye.config.version>3.4.1</smallrye.config.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>jakarta.nosql</groupId>
-            <artifactId>nosql-core</artifactId>
-            <version>1.0.0-b7</version>
-        </dependency>    
+            <groupId>org.jboss.weld.se</groupId>
+            <artifactId>weld-se-shaded</artifactId>
+            <version>${weld.se.core.version}</version>
+        </dependency>
         <dependency>
-            <groupId>jakarta.nosql.mapping</groupId>
-            <artifactId>mapping-document</artifactId>
-            <version>1.0.0-b5</version>
+            <groupId>org.eclipse</groupId>
+            <artifactId>yasson</artifactId>
+            <version>${yasson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.smallrye.config</groupId>
+            <artifactId>smallrye-config</artifactId>
+            <version>${smallrye.config.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jnosql.databases</groupId>
             <artifactId>jnosql-mongodb</artifactId>
-            <version>1.0.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.weld.se</groupId>
-            <artifactId>weld-se-shaded</artifactId>
-            <version>3.1.9.Final</version>
+            <version>${jnosql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -47,11 +51,6 @@
             <groupId>org.glassfish</groupId>
             <artifactId>javax.el</artifactId>
             <version>3.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.smallrye.config</groupId>
-            <artifactId>smallrye-config</artifactId>
-            <version>1.9.1</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
