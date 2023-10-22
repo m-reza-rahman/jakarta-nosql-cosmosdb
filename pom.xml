@@ -19,6 +19,8 @@
         <jnosql.version>1.0.2</jnosql.version>
         <yasson.version>3.0.3</yasson.version>
         <smallrye.config.version>3.4.1</smallrye.config.version>
+        <el.impl.version>5.0.0-M1</el.impl.version>
+        <hibernate.validator.version>8.0.1.Final</hibernate.validator.version>
     </properties>
 
     <dependencies>
@@ -45,12 +47,13 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>6.1.6.Final</version>
+            <version>${hibernate.validator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
-            <artifactId>javax.el</artifactId>
-            <version>3.0.0</version>
+            <artifactId>jakarta.el</artifactId>
+            <version>${el.impl.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
