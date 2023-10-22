@@ -45,6 +45,11 @@
             <version>${jnosql.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.eclipse.jnosql.mapping</groupId>
+            <artifactId>jnosql-mapping-validation</artifactId>
+            <version>${jnosql.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate.validator.version}</version>
