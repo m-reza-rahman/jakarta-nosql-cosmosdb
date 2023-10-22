@@ -1,11 +1,10 @@
 package org.jnosql.demo.cosmosdb;
 
-import static jakarta.nosql.document.DocumentDeleteQuery.delete;
-import static jakarta.nosql.document.DocumentQuery.select;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,8 +19,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import jakarta.nosql.document.DocumentQuery;
-import jakarta.nosql.mapping.document.DocumentTemplate;
+import jakarta.nosql.document.DocumentTemplate;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AzureGameStoreTest {
@@ -43,7 +41,7 @@ public class AzureGameStoreTest {
     container = SeContainerInitializer.newInstance().initialize();
     template = container.select(DocumentTemplate.class).get();
 
-    template.delete(delete().from("Order").build());
+    template.delete(Order.class);
   }
 
   @Test
@@ -118,17 +116,17 @@ public class AzureGameStoreTest {
   public void test_3_testQuery() {
     logger.info("Testing querying.");
 
-    DocumentQuery query = select().from("Order").where("totalCost").gt(1000).build();
-    assertEquals(1, template.select(query).count());
-    logger.info("Found orders with cost > 1,000: " + template.select(query).count());
+    List<Order> results = template.select(Order.class).where("totalCost").gt(1000).result(); 
+    assertEquals(1, results.size());
+    logger.info("Found orders with cost > 1,000: " + results.size());
 
-    query = select().from("Order").where("description").like("^Pinball").build();
-    assertEquals(1, template.select(query).count());
-    logger.info("Found orders for pinball: " + template.select(query).count());
+    results = template.select(Order.class).where("description").like("^Pinball").result();
+    assertEquals(1, results.size());
+    logger.info("Found orders for pinball: " + results.size());
 
-    query = select().from("Order").where("orderLines.description").eq("machine").build();
-    assertEquals(2, template.select(query).count());
-    logger.info("Found orders with a machine: " + template.select(query).count());
+    results = template.select(Order.class).where("orderLines.description").eq("machine").result();    
+    assertEquals(2, results.size());
+    logger.info("Found orders with a machine: " + results.size());
   }
 
   @Test

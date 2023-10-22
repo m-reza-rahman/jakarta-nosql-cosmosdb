@@ -15,24 +15,23 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jakarta.nosql.version>1.0.0-b4</jakarta.nosql.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.eclipse.jnosql.mapping</groupId>
+            <groupId>jakarta.nosql</groupId>
+            <artifactId>nosql-core</artifactId>
+            <version>1.0.0-b7</version>
+        </dependency>    
+        <dependency>
+            <groupId>jakarta.nosql.mapping</groupId>
             <artifactId>mapping-document</artifactId>
-            <version>${jakarta.nosql.version}</version>
+            <version>1.0.0-b5</version>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.jnosql.communication</groupId>
-            <artifactId>mongodb-driver</artifactId>
-            <version>${jakarta.nosql.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jnosql.mapping</groupId>
-            <artifactId>mapping-validation</artifactId>
-            <version>${jakarta.nosql.version}</version>
+            <groupId>org.eclipse.jnosql.databases</groupId>
+            <artifactId>jnosql-mongodb</artifactId>
+            <version>1.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.weld.se</groupId>
