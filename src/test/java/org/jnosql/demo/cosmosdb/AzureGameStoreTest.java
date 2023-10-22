@@ -41,7 +41,7 @@ public class AzureGameStoreTest {
     container = SeContainerInitializer.newInstance().initialize();
     template = container.select(DocumentTemplate.class).get();
 
-    template.delete(Order.class);
+    template.delete(Order.class).execute();
   }
 
   @Test
