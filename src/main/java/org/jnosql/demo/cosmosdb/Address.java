@@ -1,9 +1,9 @@
 package org.jnosql.demo.cosmosdb;
 
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
-import jakarta.nosql.mapping.Column;
-import jakarta.nosql.mapping.Embeddable;
+import jakarta.nosql.Column;
+import org.eclipse.jnosql.mapping.Embeddable;
 
 @Embeddable
 public class Address {
