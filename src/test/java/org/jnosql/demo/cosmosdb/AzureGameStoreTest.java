@@ -9,17 +9,16 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.enterprise.inject.se.SeContainerInitializer;
-import jakarta.validation.ConstraintViolationException;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.nosql.document.DocumentTemplate;
+import jakarta.validation.ConstraintViolationException;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class AzureGameStoreTest {
@@ -124,7 +123,7 @@ public class AzureGameStoreTest {
     assertEquals(1, results.size());
     logger.info("Found orders for pinball: " + results.size());
 
-    results = template.select(Order.class).where("orderLines.description").eq("machine").result();    
+    results = template.select(Order.class).where("orderLines.description").eq("machine").result();
     assertEquals(2, results.size());
     logger.info("Found orders with a machine: " + results.size());
   }
