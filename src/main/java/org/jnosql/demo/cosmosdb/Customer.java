@@ -1,10 +1,9 @@
 package org.jnosql.demo.cosmosdb;
 
-import jakarta.validation.constraints.NotBlank;
-
 import jakarta.nosql.Column;
 import jakarta.nosql.Entity;
 import jakarta.nosql.Id;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Customer {
