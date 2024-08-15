@@ -1,6 +1,6 @@
 # Jakarta NoSQL with Cosmos DB
 
-This repository shows how to use Cosmos DB with the Jakarta NoSQL specification. The repository hosts the demo for [this](abstract.md) talk.
+This repository shows how to use Cosmos DB with the Jakarta NoSQL specification. The repository hosts the demo for [this](abstract.md) talk. A video of the talk can be found on [YouTube](https://www.youtube.com/watch?v=oEbJSEfFqBQ).
 
 We will be using the MongoDB API for Cosmos DB. You could also use the Cassandra or Gremlin API for Cosmos DB with Jakarta NoSQL.
 
